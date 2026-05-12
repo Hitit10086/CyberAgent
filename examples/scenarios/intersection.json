@@ -1,0 +1,37 @@
+{
+  "lanes": [
+    {
+      "id": "lane_ego",
+      "type": "driving",
+      "points": [
+        {"x": 0, "y": 0},
+        {"x": 100, "y": 0},
+        {"x": 200, "y": 0},
+        {"x": 300, "y": 0}
+      ],
+      "speed_limit": 60.0
+    }
+  ],
+  "obstacles": [
+    {
+      "id": "obs_vehicle_1",
+      "type": "vehicle",
+      "position": {"x": 120, "y": 0},
+      "velocity": {"x": 8.0, "y": 0.0}
+    }
+  ],
+  "traffic_lights": [
+    {
+      "id": "tl_main",
+      "state": "green",
+      "position": {"x": 150, "y": 0},
+      "remaining_time": 25.0
+    }
+  ],
+  "ego_vehicle": {
+    "position": {"x": 0, "y": 0, "z": 0},
+    "heading": 0.0,
+    "speed": 30.0,
+    "destination": {"x": 300, "y": 0}
+  }
+}
