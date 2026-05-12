@@ -41,7 +41,7 @@
 ## 安装
 
 ```bash
-git clone https://github.com/linhanyuan/CyberAgent.git
+git clone https://github.com/Hitit10086/CyberAgent.git
 cd CyberAgent
 pip install -r requirements.txt
 ```
