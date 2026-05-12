@@ -1,0 +1,98 @@
+======================================================================
+  CyberAgent -- Multi-Agent Autonomous Driving Simulation Analyzer
+======================================================================
+
+[LOAD] Scenario: 城市十字路口场景
+       ID: intersection-001
+       Description: 典型城市十字路口，包含直行车道、横向车道、一辆动态车和一个行人
+
+[AGENT] Launching 4-Agent collaborative pipeline...
+        Perception -> Planner (CoT) -> Verifier -> Reporter
+
+======================================================================
+# 场景分析报告: 城市十字路口场景
+
+**场景 ID**: `intersection-001`
+**分析时间**: 2026-05-12T22:41:01.031560
+**整体安全评分**: `93.30%`
+**验证状态**: [PASS]
+
+---
+
+## 1. 场景解析 (Perception Agent)
+
+- 检测到障碍物: 2 个
+- 解析置信度: 92.0%
+- 处理耗时: 0.0ms
+
+### 场景元素
+
+| 类型 | 数量 |
+|------|------|
+| 车道 | 2 |
+| 障碍物 | 2 |
+| 交通信号灯 | 1 |
+
+## 2. 轨迹规划 (Planner Agent) — 长链推理过程
+
+**Step 1**: [目标识别] 自车位置 (0.0, 0.0) → 目标点 (300.0, 0.0)，当前朝向 0.0°
+
+**Step 2**: [约束建模] 检测到 2 条车道, 0 个静态障碍物, 2 个动态参与者, 0 个红灯
+
+**Step 3**: [候选生成] 基于 2 条车道生成 7 条候选轨迹，采样分辨率 0.5m
+
+**Step 4**: [代价评估] 对 7 条候选进行三维度评估: 安全性(权重=0.5), 舒适性(权重=0.3), 效率(权重=0.2)
+
+**Step 5**: [最优选择] 综合评分后选择 Trajectory-C3，预估安全评分 0.80，总长度 300.0m
+
+**规划置信度**: 88.0%
+
+## 3. 安全验证 (Verifier Agent)
+
+| 检查项 | 评分 |
+|--------|------|
+| 碰撞风险 | 85.0% |
+| 交通规则合规性 | 100.0% |
+| 综合安全评分 | 93.3% |
+
+**反馈**: 碰撞风险较高 (评分: 0.85)
+
+## 4. Token 消耗统计
+
+| 指标 | 数值 |
+|------|------|
+| Prompt Tokens | 2,874 |
+| Completion Tokens | 1,633 |
+| Total Tokens | 4,507 |
+
+======================================================================
+
+[METRICS]
+  Total elapsed:   0.0000s
+  Total tokens:    5,236
+  Safety score:    93.30%
+  Verification:    PASSED
+
+[TOKEN BREAKDOWN by Agent]
+  perception   [######------------------------]  1,074 tokens
+  planner      [############------------------]  2,233 tokens
+  verifier     [######------------------------]  1,200 tokens
+  reporter     [####--------------------------]    729 tokens
+
+[CoT REASONING TRACE]
+  Step 1: [目标识别] 自车位置 (0.0, 0.0) → 目标点 (300.0, 0.0)，当前朝向 0.0°
+  Step 2: [约束建模] 检测到 2 条车道, 0 个静态障碍物, 2 个动态参与者, 0 个红灯
+  Step 3: [候选生成] 基于 2 条车道生成 7 条候选轨迹，采样分辨率 0.5m
+  Step 4: [代价评估] 对 7 条候选进行三维度评估: 安全性(权重=0.5), 舒适性(权重=0.3), 效率(权重=0.2)
+  Step 5: [最优选择] 综合评分后选择 Trajectory-C3，预估安全评分 0.80，总长度 300.0m
+
+[MESSAGE BUS ACTIVITY]
+  [scene_graph_ready] from=perception
+  [trajectory_proposed] from=planner
+  [verification_result] from=verifier
+  [report_generated] from=reporter
+
+======================================================================
+  Pipeline complete. All 4 agents executed successfully.
+  GitHub: https://github.com/Hitit10086/CyberAgent
+======================================================================

@@ -1,0 +1,24 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.5, pytest-9.0.3, pluggy-1.6.0 -- D:\Python3.11.5\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\18066\Desktop\CyberAgent
+collecting ... collected 16 items
+
+tests/test_agents.py::TestMessageBus::test_register_agent PASSED         [  6%]
+tests/test_agents.py::TestMessageBus::test_publish_subscribe PASSED      [ 12%]
+tests/test_agents.py::TestMessageBus::test_broadcast PASSED              [ 18%]
+tests/test_agents.py::TestTokenTracker::test_record_and_summary PASSED   [ 25%]
+tests/test_agents.py::TestTokenTracker::test_phase_breakdown PASSED      [ 31%]
+tests/test_agents.py::TestScenario::test_scene_graph_creation PASSED     [ 37%]
+tests/test_agents.py::TestScenario::test_scenario_from_file PASSED       [ 43%]
+tests/test_agents.py::TestPerceptionAgent::test_process_empty_scenario PASSED [ 50%]
+tests/test_agents.py::TestPerceptionAgent::test_process_with_obstacles PASSED [ 56%]
+tests/test_agents.py::TestPlannerAgent::test_plan_with_cot PASSED        [ 62%]
+tests/test_agents.py::TestPlannerAgent::test_plan_without_cot PASSED     [ 68%]
+tests/test_agents.py::TestVerifierAgent::test_verify_empty_scene PASSED  [ 75%]
+tests/test_agents.py::TestVerifierAgent::test_verify_with_collision_risk PASSED [ 81%]
+tests/test_agents.py::TestReporterAgent::test_generate_markdown_report PASSED [ 87%]
+tests/test_agents.py::TestOrchestratorIntegration::test_full_pipeline PASSED [ 93%]
+tests/test_agents.py::TestOrchestratorIntegration::test_batch_analysis PASSED [100%]
+
+============================= 16 passed in 0.06s ==============================

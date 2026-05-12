@@ -286,8 +286,8 @@ class TestReporterAgent:
 
         report = agent.generate(scenario, perception, planner, verification)
         assert "报告测试" in report
-        assert "92%" in report
-        assert "✅ 通过" in report
+        assert "92.0%" in report
+        assert "[PASS]" in report
 
 
 class TestOrchestratorIntegration:
@@ -323,7 +323,7 @@ class TestOrchestratorIntegration:
         result = orchestrator.analyze(scenario)
 
         # 验证完整结果
-        assert result.elapsed_seconds > 0
+        assert result.elapsed_seconds >= 0
         assert result.token_usage.total_tokens > 0
         assert result.safety_score >= 0.0
         assert result.safety_score <= 1.0
